@@ -1,0 +1,118 @@
+#campaign-christmas-landing {
+  overflow: hidden;
+  position: relative;
+  animation: snowY 5s linear infinite, snowX 55s linear infinite;
+  padding: 0;
+  background: url("https://static.freepikcompany.com/flaticon/christmas/img/banners/snow.svg") 0 0, url("https://static.freepikcompany.com/flaticon/christmas/img/banners/bg.svg") bottom right no-repeat, linear-gradient(to right, #C7EBFF, #92CDFA);
+  background-size: 1560px auto, 1832px auto, auto auto;
+  z-index: 999;
+}
+#campaign-christmas-landing p {
+  display: inline;
+}
+#campaign-christmas-landing .notification__close {
+  top: 50%;
+  z-index: 99;
+  transform: translateY(-50%);
+  color: #113255 !important;
+}
+#campaign-christmas-landing .notification__close .icon {
+  color: #113255 !important;
+}
+#campaign-christmas-landing .notification__content {
+  padding: 0;
+}
+#campaign-christmas-landing .notification__content a {
+  position: relative;
+  z-index: 10;
+  display: block;
+  padding: 20px 50px 20px 20px;
+  color: #113255 !important;
+}
+#campaign-christmas-landing .notification__content a b {
+  color: #1273EB !important;
+  font-weight: bold;
+}
+@media (max-width: 640px) {
+  #campaign-christmas-landing .notification__content a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 50px 10px 20px;
+    font-size: 14px;
+  }
+  #campaign-christmas-landing .notification__content a p {
+    flex: 1;
+  }
+}
+@media (min-width: 768px) {
+  #campaign-christmas-landing .santa, #campaign-christmas-landing::after {
+    position: absolute;
+    content: "";
+  }
+  #campaign-christmas-landing::after {
+    top: 0;
+    right: 50px;
+    width: 320px;
+    height: 100%;
+    background: url("https://static.freepikcompany.com/flaticon/christmas/img/banners/extra.svg") bottom right no-repeat;
+    background-size: 320px auto;
+  }
+}
+@media (min-width: 992px) {
+  #campaign-christmas-landing .santa {
+    animation: santaMovement 20s linear infinite;
+    top: 50%;
+    right: 400px;
+    width: 152px;
+    height: 50px;
+  }
+  #campaign-christmas-landing .santa::before {
+    animation: santaRotate 8s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: -25px;
+    background: url("https://static.freepikcompany.com/flaticon/christmas/img/banners/santa.svg") center center no-repeat;
+    background-size: 152px auto;
+    content: "";
+  }
+}
+
+@keyframes santaMovement {
+  0% {
+    transform: translate(40px, 60px);
+  }
+  100% {
+    transform: translate(-1000px, -60px);
+  }
+}
+@keyframes santaRotate {
+  0% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes snowY {
+  0% {
+    background-position-y: 0, bottom, 0;
+  }
+  100% {
+    background-position-y: 210px, bottom, 0;
+  }
+}
+@keyframes snowX {
+  0% {
+    background-position-x: 0, right, 0;
+  }
+  100% {
+    background-position-x: 3120px, right, 0;
+  }
+}
