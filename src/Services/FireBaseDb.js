@@ -1,5 +1,5 @@
 import * as React from 'react';
-import firebase from './Config'
+import firebase from '../fireBase/Config'
 import { AsyncStorage } from "react-native";
 var uid ;
 

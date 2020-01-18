@@ -6,7 +6,8 @@ import firebase from '../fireBase/Config'
 import DialogReminder from './DialogReminder'
 import moment from 'moment';
 import ColorPalette from 'react-native-color-palette'
-import {saveNote } from '../fireBase/FireBaseDb'
+import {saveNote } from '../Services/FireBaseDb'
+// import { saveNote } from '../Services/AxiosDb'
 
 
 export default class CreateNotes extends React.Component {
@@ -85,7 +86,7 @@ export default class CreateNotes extends React.Component {
     return (
       <View style={{ flex: 1, width: '100%' }}>
         <Appbar style={styles.top}>
-          <Appbar.Action icon={require('../Image/BackArrow.png')}
+          <Appbar.Action icon={require('../Image/arrow_back.png')}
             onPress={() => {this.handleSaveNote()
               this.props.navigation.navigate('Notes')}} />
 

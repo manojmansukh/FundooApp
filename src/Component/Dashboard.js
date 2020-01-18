@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { Appbar, Card } from 'react-native-paper';
-import { StyleSheet, Image, FlatList, Text, ScrollView, TouchableHighlight, ActivityIndicator, TouchableOpacity, Title } from 'react-native';
-import { View } from 'native-base';
 import firebase from '../fireBase/Config'
+import axios from'axios'
+import moment from 'moment';
+import { Appbar } from 'react-native-paper';
+import { View } from 'native-base';
 import { AsyncStorage } from "react-native";
 import AppBar1 from './AppBar1'
 import { Chip, } from 'react-native-paper';
 import AppBarSelectedNotes from './AppBarSelectedNotes'
-import moment from 'moment';
 import PushNotification from "react-native-push-notification"
-import { getNotes, getUserId, setPin, setArchive, setTrash, PermanentDelete} from '../fireBase/FireBaseDb';
-import axios from 'axios';
+import { StyleSheet, Image, FlatList, Text, ScrollView, TouchableOpacity, } from 'react-native';
+import { getNotes, setPin, setArchive, setTrash, PermanentDelete} from '../Services/FireBaseDb';
+// import { getNotes, setPin, setArchive, setTrash, } from '../Services/AxiosDb'
 var dateTime,note,title,systemTime;
 
 export default class Notes extends React.Component {
@@ -31,7 +32,8 @@ export default class Notes extends React.Component {
       currentTime: '',
       date:'',
       time:'',
-      nameList:''
+      nameList:'',
+      users: []
     };
 
   }
@@ -170,20 +172,12 @@ async requestPermission() {
 
   
 
-  componentDidMount() {
+  async componentDidMount() {
     // this.checkPermission();
     // this.createNotificationListeners();
     const nameList = ''
-    // console.log('MJJJJJJJJ',nameList);
 
-    axios.get('https://database-cf39b.firebaseio.com/users.json')
-
-    .then(res => {
-      nameList = Object.values(res.data);
-      console.log('MJJJJJJJJ',nameList);
-      
-      //  this.setState({ nameList });
-     })
+   //getNotes1();
 
     this.showNotification(dateTime,note,title)
     var date = moment()
@@ -196,12 +190,15 @@ async requestPermission() {
     }
     );
     
+    //firebase method & Axios method
 
     getNotes((snapshotValue) => {
       this.setState({
         dataSource: snapshotValue,
         listView: true,
       }, () => {
+        console.log('filter', this.state.dataSource );
+        
         var pinData = []
         var unPinData = []
         this.state.dataSource !== null ?
@@ -209,11 +206,11 @@ async requestPermission() {
             var Key = key
             var data = this.state.dataSource[key]
 
-            if (this.state.dataSource[key].Pin == true) {
+            if (this.state.dataSource[key].Pin == true && this.state.dataSource[key].Trash == false) {
               this.state.dataSource[key].noteId = key
               pinData.push(this.state.dataSource[key])
             }
-            else {
+            else if(this.state.dataSource[key].Pin == false && this.state.dataSource[key].Trash == false) {
               this.state.dataSource[key].noteId = key
               unPinData.push(this.state.dataSource[key])
             }
@@ -277,8 +274,8 @@ async requestPermission() {
                           dateTime = this.state.pinData[item].Date+" "+this.state.pinData[item].Time,
                           note = this.state.pinData[item].Note,
                           title = this.state.pinData[item].Title,
-                          console.log('<<<<<<<<<<renderv<>>>>',dateTime),
-                          console.log(this.state.pinData[item].Date),
+                          // console.log('<<<<<<<<<<renderv<>>>>',dateTime),
+                          // console.log(this.state.pinData[item].Date),
 
                           //local notification method
                           this.showNotification(dateTime,note,title),

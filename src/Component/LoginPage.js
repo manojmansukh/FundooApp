@@ -5,7 +5,7 @@ import { onSignIn } from "./Authentication";
 import { SetCurrentUser} from "./Authentication";
 import { AsyncStorage } from "react-native";
 import { LoginManager } from 'react-native-fbsdk';
-import { getUserId} from '../fireBase/FireBaseDb'
+import { getUserId} from '../Services/FireBaseDb'
 
 export default class Login extends Component {
   static navigationOptions = ({ navigation }) => ({

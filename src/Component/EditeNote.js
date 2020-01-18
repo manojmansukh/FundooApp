@@ -7,7 +7,8 @@ import DialogReminder from './DialogReminder'
 import BottomBar from './BottomBar';
 import moment from 'moment';
 import ColorPalette from 'react-native-color-palette'
-import { editNote, setReminder, moveToTrash } from '../fireBase/FireBaseDb'
+import { editNote, setReminder, moveToTrash } from '../Services/FireBaseDb'
+// import { editNote, setReminder, moveToTrash } from '../Services/AxiosDb'
 
 
 export default class EditeNotes extends React.Component {
@@ -114,7 +115,7 @@ export default class EditeNotes extends React.Component {
       <View style={{ flex: 1 }}>
         {/* <View style={{height:'9%',backgroundColor:'green',}}> */}
         <Appbar style={styles.top}>
-          <Appbar.Action icon={require('../Image/BackArrow.png')}
+          <Appbar.Action icon={require('../Image/arrow_back.png')}
             onPress={() => {
               this.handleSaveNote()
               this.props.navigation.navigate('Notes')

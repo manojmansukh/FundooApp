@@ -5,7 +5,9 @@ import { View } from 'native-base';
 import firebase from '../fireBase/Config'
 import { AsyncStorage } from "react-native";
 import {  Provider, Menu, Divider, Snackbar } from 'react-native-paper';
-import { permanantDelete } from '../fireBase/FireBaseDb'
+import {PermanentDelete } from '../Services/FireBaseDb'
+// import { PermanentDelete } from '../Services/AxiosDb'
+
 export default class Notes extends React.Component {
   constructor(props) {
     super(props);
@@ -59,7 +61,7 @@ export default class Notes extends React.Component {
       console.log("delete status:",this.state.permantDelete);
       var currentUser = firebase.auth().currentUser.uid
       this.state.selectedData.map(currentNoteId => (
-        permanantDelete(currentNoteId)
+        PermanentDelete(currentNoteId)
       ))
     })
   }
@@ -188,7 +190,7 @@ export default class Notes extends React.Component {
 
                   <Menu.Item onPress={() => {
                     this.setState({ permanantDelete: true }, () => {
-                    this.handlePermantDelete(this.state.permanantDelete)
+                    this.handlePermantDelete(this.permanantDelete)
                     })
                   }} title="Permanant Delete" />
 

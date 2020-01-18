@@ -3,7 +3,8 @@ import { Appbar } from 'react-native-paper';
 import { StyleSheet ,Image, Text, TouchableOpacity} from 'react-native';
 import { View } from 'native-base';
 import { isSignedIn } from "./Authentication";
-import { getUserId} from '../fireBase/FireBaseDb'
+import { getUserId} from '../Services/FireBaseDb'
+import { UserId } from '../Services/AxiosDb'
 
 export default class Notes extends React.Component {
   render() {
@@ -36,6 +37,7 @@ export default class Notes extends React.Component {
         
         //firebase Method
         getUserId();
+        UserId();
 
         isSignedIn()
         .then(res => {
