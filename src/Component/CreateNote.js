@@ -6,8 +6,8 @@ import firebase from '../fireBase/Config'
 import DialogReminder from './DialogReminder'
 import moment from 'moment';
 import ColorPalette from 'react-native-color-palette'
-import {saveNote } from '../Services/FireBaseDb'
-// import { saveNote } from '../Services/AxiosDb'
+//import {saveNote } from '../Services/FireBaseDb'
+ import { saveNote } from '../Services/AxiosDb'
 
 
 export default class CreateNotes extends React.Component {

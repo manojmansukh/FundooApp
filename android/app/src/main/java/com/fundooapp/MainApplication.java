@@ -8,11 +8,14 @@ import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.soloader.SoLoader;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 
@@ -34,12 +37,12 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
-           // packages.add(new MainReactPackage());
-            //packages.add(new RNFirebasePackage());
+            packages.add(new MainReactPackage());
+            packages.add(new RNFirebasePackage());
             packages.add(new RNFirebaseMessagingPackage());
             packages.add(new RNFirebaseNotificationsPackage());
 
-            //packages.add(new FBSDKPackage(mcallbackManager));
+            //packages.add(new FBSDKPackage(mCallbackManager));
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
 

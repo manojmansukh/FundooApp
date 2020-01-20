@@ -50,7 +50,7 @@ export default class AppBarSelectedNotes extends Component {
         let selectedColor = '#C0392B';
         return (
             <Appbar style={styles.top}>
-                <Appbar.Action icon={require('../Image/BackArrow.png')}
+                <Appbar.Action icon={require('../Image/arrow_back.png')}
                     onPress={() => {
                         this.setState({ selectionMode: false }, () => {
                             console.log(this.state.selectionMode);

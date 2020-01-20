@@ -10,8 +10,8 @@ import { Chip, } from 'react-native-paper';
 import AppBarSelectedNotes from './AppBarSelectedNotes'
 import PushNotification from "react-native-push-notification"
 import { StyleSheet, Image, FlatList, Text, ScrollView, TouchableOpacity, } from 'react-native';
-import { getNotes, setPin, setArchive, setTrash, PermanentDelete} from '../Services/FireBaseDb';
-// import { getNotes, setPin, setArchive, setTrash, } from '../Services/AxiosDb'
+//import { getNotes, setPin, setArchive, setTrash, PermanentDelete} from '../Services/FireBaseDb';
+ import { getNotes, setPin, setArchive, setTrash, } from '../Services/AxiosDb'
 var dateTime,note,title,systemTime;
 
 export default class Notes extends React.Component {
